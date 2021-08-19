@@ -37,7 +37,7 @@ const showList = (autos) => {
 
     console.log(auto);
   }
-  document.getElementById('products').appendChild(lsit)
+  document.getElementById('products').appendChild(list)
   document.body.appendChild(list); // Se muestra en pantalla la lista total
 };
 
