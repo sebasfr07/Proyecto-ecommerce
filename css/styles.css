@@ -1,3 +1,52 @@
+.item{
+  width: 40%;
+  margin-bottom: 20px;
+}
+
+.list{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-top: 30px;
+}
+
+.list .img{
+  width: 500px;
+  margin-bottom: 5px;
+  padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.price .description .name{
+  font-family: 'Raleway', serif !important;
+}
+
+.price{
+  color: #6c757d!important;
+}
+
+.soldCount{
+  color: #6c757d!important;
+}
+
+#foot{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height: 10%;   /* Height of the footer */
+  padding-bottom:7%;
+  text-align: left;
+  padding-top: 1rem;
+}
+
+.containerLogin{
+  padding-left: 4%;
+}
+
 .jumbotron, .card-body, .container, .site-header{
     font-family: 'Raleway', serif !important;
 }
