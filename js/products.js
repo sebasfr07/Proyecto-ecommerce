@@ -13,7 +13,7 @@ const showList = (autos) => {
     var price = document.createElement('p');
     var priceText = document.createTextNode(`${auto.currency} ${auto.cost}`)
     price.appendChild(priceText)
-    
+
     var soldCount = document.createElement('p');
     var soldCountText = document.createTextNode(`${auto.soldCount} vendidos`)
     soldCount.appendChild(soldCountText);
@@ -40,8 +40,8 @@ const showList = (autos) => {
 
     console.log(auto);
   }
-  document.getElementById('products').appendChild(list)
-  document.body.appendChild(list); // Se muestra en pantalla la lista total
+  
+  document.getElementsByClassName("div")[2].appendChild(list); // Se muestra en pantalla la lista total
 };
 
 document.addEventListener("DOMContentLoaded", async function (e) {
