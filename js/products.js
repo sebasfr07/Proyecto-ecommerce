@@ -1,24 +1,27 @@
 const showList = (autos) => {
   const list = document.getElementById('products');
   console.log(list);
-  
+
   list.setAttribute('class', "list");
-  
+
   for (let auto of autos) {
     const item = document.createElement("div");
     const img = document.createElement("img");
     const name = document.createElement("h1");
     const description = document.createElement('p');
+   
     var price = document.createElement('p');
     var priceText = document.createTextNode(`${auto.currency} ${auto.cost}`)
+    price.appendChild(priceText)
+    
     var soldCount = document.createElement('p');
     var soldCountText = document.createTextNode(`${auto.soldCount} vendidos`)
     soldCount.appendChild(soldCountText);
-    price.appendChild(priceText)
+    
 
     name.innerText = auto.name;
     description.innerText = auto.description;
-     
+
     img.setAttribute('src', auto.imgSrc);
     img.setAttribute('class', 'img');
 
