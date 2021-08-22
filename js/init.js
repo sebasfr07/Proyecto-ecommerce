@@ -44,7 +44,6 @@ const showLogin = () => {
   if (sessionStorage.getItem("cargado")) {
   } else {
     window.location.replace("login.html");
-    e.preventDefault();
   }
 }
 
