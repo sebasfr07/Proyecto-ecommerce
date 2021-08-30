@@ -33,6 +33,14 @@
   color: #6c757d!important;
 }
 
+/* esto es la nueva forma*/
+.text-muted-cost{
+  display: flex;
+  margin-top: 4%;
+  text-align: right;
+}
+/*//////////////////////*/
+
 #foot {
   position: absolute;
   bottom: 0;
