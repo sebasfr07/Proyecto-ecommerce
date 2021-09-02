@@ -1,6 +1,9 @@
-const ORDER_ASC_BY_PRICE = "AZ";
-const ORDER_DESC_BY_PRICE = "ZA";
-const ORDER_BY_PROD_RELEV = "Relev.";
+debugger
+const ORDER_ASC_BY_COST = "Precio ↑";
+const ORDER_DESC_BY_COST = "Precio ↓";
+const ORDER_BY_PROD_SOLD = "Relev.";
+var currentCategoriesArray = [];
+var currentSortCriteria = undefined;
 
 const filtrar = document.getElementById("rangeFilterCount");
 const limpiar = document.getElementById("clearRangeFilter");
@@ -11,35 +14,35 @@ const lista = document.getElementById('products');
 
 function sortCategories(criteria, array) {
   let result = [];
-  if (criteria === ORDER_ASC_BY_NAME) {
-      result = array.sort(function (a, b) {
-          if (a.name < b.name) { return -1; }
-          if (a.name > b.name) { return 1; }
-          return 0;
-      });
-  } else if (criteria === ORDER_DESC_BY_NAME) {
-      result = array.sort(function (a, b) {
-          if (a.name > b.name) { return -1; }
-          if (a.name < b.name) { return 1; }
-          return 0;
-      });
-  } else if (criteria === ORDER_BY_PROD_COUNT) {
-      result = array.sort(function (a, b) {
-          let aCount = parseInt(a.productCount);
-          let bCount = parseInt(b.productCount);
+  if (criteria === ORDER_ASC_BY_COST) {
+    result = array.sort(function (a, b) {
+      if (a.cost < b.cost) { return -1; }
+      if (a.cost > b.cost) { return 1; }
+      return 0;
+    });
+  } else if (criteria === ORDER_DESC_BY_COST) {
+    result = array.sort(function (a, b) {
+      if (a.cost > b.cost) { return -1; }
+      if (a.cost < b.cost) { return 1; }
+      return 0;
+    });
+  } else if (criteria === ORDER_BY_PROD_SOLD) {
+    result = array.sort(function (a, b) {
+      let aSold = a.soldCount;
+      let bSold = b.soldCount;
 
-          if (aCount > bCount) { return -1; }
-          if (aCount < bCount) { return 1; }
-          return 0;
-      });
+      if (aSold > bSold) { return -1; }
+      if (aSold < bSold) { return 1; }
+      return 0;
+    });
   }
 
   return result;
 }
 
-function showList(array) {
+function showList() {
   let lista = "";
-  array.filter(auto => auto.cost >= costFilterMin && auto.cost <= costFilterMax).forEach(auto => {
+  currentCategoriesArray.filter(auto => auto.cost >= costFilterMin && auto.cost <= costFilterMax).forEach(auto => {
     lista += `
             <a href="product-info.html" class="list-group-item list-group-item-action">
                 <div class="row">
@@ -63,22 +66,41 @@ function showList(array) {
 };
 
 
+function sortAndShowCategories(sortCriteria, categoriesArray) {
+  currentSortCriteria = sortCriteria;
+
+  if (categoriesArray != undefined) {
+    currentCategoriesArray = categoriesArray;
+  }
+
+  currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
+
+  //Muestro las categorías ordenadas
+  showList();
+}
+
 
 document.addEventListener("DOMContentLoaded", async function (e) {
-  const autos = (await getJSONData(PRODUCTS_URL)).data;
-  showList(autos);
+  // const autos = (await getJSONData(PRODUCTS_URL)).data;
+  // showList();
 
+  getJSONData(PRODUCTS_URL).then(function (resultObj) {
+    if (resultObj.status === "ok") {
+        sortAndShowCategories(ORDER_ASC_BY_COST, resultObj.data);
+    }
+});
+  
   document.getElementById("priceAsc").addEventListener("click", function () {
-    sortAndShowCategories(ORDER_ASC_BY_NAME);
-});
+    sortAndShowCategories(ORDER_ASC_BY_COST);
+  });
 
-document.getElementById("priceDesc").addEventListener("click", function () {
-    sortAndShowCategories(ORDER_DESC_BY_NAME);
-});
+  document.getElementById("priceDesc").addEventListener("click", function () {
+    sortAndShowCategories(ORDER_DESC_BY_COST);
+  });
 
-document.getElementById("sortByCount").addEventListener("click", function () {
-    sortAndShowCategories(ORDER_BY_PROD_COUNT);
-});
+  document.getElementById("sortByCount").addEventListener("click", function () {
+    sortAndShowCategories(ORDER_BY_PROD_SOLD);
+  });
 
 
   filtrar.addEventListener("click", function (event) {
@@ -91,13 +113,15 @@ document.getElementById("sortByCount").addEventListener("click", function () {
     }
     console.log(costFilterMin);
     console.log(costFilterMax);
-    showList(autos);
+    showList();
   });
 
   limpiar.addEventListener("click", function (event) {
     costFilterMin = 0
     costFilterMax = 9999999
-    showList(autos);
+    document.getElementById("rangeFilterCountMin").value = "";
+    document.getElementById("rangeFilterCountMax").value = "";
+    showList();
   });
 });
 
