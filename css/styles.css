@@ -41,6 +41,10 @@
 }
 /*//////////////////////*/
 
+#unamePrinted{
+  color: rgb(184, 225, 250);
+}
+
 #foot {
   position: absolute;
   bottom: 0;
