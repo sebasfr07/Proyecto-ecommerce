@@ -45,6 +45,11 @@
   color: rgb(184, 225, 250);
 }
 
+#logout{
+  padding-left: 8px;
+  font-size: small
+}
+
 #foot {
   position: absolute;
   bottom: 0;

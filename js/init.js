@@ -60,7 +60,11 @@ const showUser = () => {
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <a class="py-2 d-none d-md-inline-block" id="unamePrinted" href="my-profile.html">${user}</a>
+      <div>
+      <a class="py-2 d-none d-md-inline-block" id="unamePrinted" href="my-profile.html">${user}
+      <a class="py-2 d-none d-md-inline-block" id="logout" href="">Salir</a>
+      </a>
+      </div>
     </div>
   </nav>
   `
@@ -68,10 +72,21 @@ const showUser = () => {
   document.getElementsByTagName("nav")[0].innerHTML = userPrint;
 }
 
+
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
   showLogin();
   showUser();
+
+  document.getElementById("logout").addEventListener("click", function (e) {
+    e.preventDefault();
+    
+    sessionStorage.removeItem("cargado");
+
+    window.location.replace("login.html");
+  });
+
 });
