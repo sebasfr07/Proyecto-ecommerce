@@ -1,3 +1,5 @@
+const formComentarios = document.getElementById("formComment");
+
 
 const showImages = (product) => {
     let imagenes = ""
@@ -6,23 +8,25 @@ const showImages = (product) => {
             <img src="${images}" class="imagenesAuto"></img>
         `
     };
-    document.getElementById("infoProductoDiv").innerHTML = imagenes;
+    document.getElementById("imgProductoDiv").innerHTML = imagenes;
 };
 
 
 const showProductInfo = (product) => {
     let infoProductos = "";
-    console.log(product);
+    console.log(product.name);
     showImages(product);
+    let myProductArray = Object.entries(product)
+    console.log(myProductArray[1][1])
+    
 
-    for (const [key, value] of Object.keys(product)) {
-        console.log(value);
-        infoProductos += `
-            <p>${value}</p>
-        `
-    }
     document.getElementById("nameProduct").innerHTML = infoProductos;
 }
+
+formComentarios.addEventListener("submit", function(e) {
+    e.preventDefault();
+    document.getElementById("comentario").value = "";
+})
 
 //https://dev.to/duxtech/5-maneras-de-iterar-un-objeto-en-javascript-jkn
 

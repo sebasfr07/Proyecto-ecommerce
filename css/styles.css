@@ -60,6 +60,24 @@
   padding-top: 1rem;
 }
 
+#imgProductDiv{
+  text-align: center;
+  margin-left: 10%;
+}
+
+.imagenesAuto{
+  display:inline-block;
+  width: 15em;
+  margin-bottom: 5px;
+  padding: .25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: .25rem;
+  max-width: 100%;
+  height: auto;
+  text-align: center;
+}
+
 .containerLogin {
   padding-left: 4%;
 }
