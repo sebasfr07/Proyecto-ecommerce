@@ -1,78 +1,45 @@
-/* .item {
-  width: 40%;
-  margin-bottom: 20px;
-}
-
-.list {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding-top: 30px;
-}
-
-.list .img {
-  width: 500px;
-  margin-bottom: 5px;
-  padding: .25rem;
-  background-color: #fff;
-  border: 1px solid #dee2e6;
-  border-radius: .25rem;
-  max-width: 100%;
-  height: auto;
-}
-
-.price .description .name {
-  font-family: 'Raleway', serif !important;
-}
-
-.price {
-  color: #6c757d!important;
-}
-
-.soldCount {
-  color: #6c757d!important;
-} */
 
 /* esto es la nueva forma*/
-.text-muted-cost{
+
+.text-muted-cost {
   display: flex;
   margin-top: 4%;
   text-align: right;
 }
 /*//////////////////////*/
 
-#unamePrinted{
+#unamePrinted {
   color: rgb(184, 225, 250);
 }
 
-#logout{
+#logout {
   padding-left: 8px;
-  font-size: small
+  font-size: small;
 }
 
 #foot {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 10%; 
+  height: 10%;
   padding-bottom: 7%;
   text-align: left;
   padding-top: 1rem;
 }
 
-#imgProductDiv{
+#imgProductDiv {
   text-align: center;
   margin-left: 10%;
 }
 
-.imagenesAuto{
-  display:inline-block;
+.imagenesAuto {
+  display: inline-block;
   width: 15em;
   margin-bottom: 5px;
-  padding: .25rem;
+  padding: 0.25rem;
   background-color: #fff;
   border: 1px solid #dee2e6;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   max-width: 100%;
   height: auto;
   text-align: center;
@@ -82,8 +49,11 @@
   padding-left: 4%;
 }
 
-.jumbotron, .card-body, .container, .site-header {
-  font-family: 'Raleway', serif !important;
+.jumbotron,
+.card-body,
+.container,
+.site-header {
+  font-family: "Raleway", serif !important;
 }
 
 .jumbotron .display-4 {
@@ -94,8 +64,8 @@
   height: 50vh;
   padding: 5em inherit;
   margin-bottom: 0;
-  background-color: #53C0FB;
-  background: url('../img/cover_back.png');
+  background-color: #53c0fb;
+  background: url("../img/cover_back.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -135,12 +105,12 @@ footer {
 }
 
 footer p {
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
 }
 
 .site-header a {
   color: white;
-  transition: ease-in-out color .15s;
+  transition: ease-in-out color 0.15s;
 }
 
 .light-text {
@@ -152,7 +122,7 @@ footer p {
 }
 
 .dropzone {
-  border: 2px dashed #0087F7;
+  border: 2px dashed #0087f7;
   border-radius: 5px;
   background: white;
 }
@@ -219,11 +189,111 @@ footer p {
   display: none;
 }
 
-a.custom-card, a.custom-card:hover {
+a.custom-card,
+a.custom-card:hover {
   color: inherit;
   text-decoration: inherit;
 }
 
 .checked {
   color: orange;
+}
+
+/* 
+Info products */
+
+.contenedor {
+  margin-top: 40px;
+  display: flex;
+  margin: 40px auto;
+  width: 60%;
+}
+
+#infoProduct {
+  width: 40%;
+}
+
+#imgsProduct {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#imgsProduct img {
+  width: 50%;
+}
+
+#formComment {
+  margin-left: 18.5%;
+}
+
+.contendor__comentarios {
+  width: 60%;
+  margin: 20px auto;
+  border: 1px #ccc solid;
+}
+
+.contendor__comentarios .comment {
+  padding: 20px 5px;
+  border: 1px #ccc solid;
+  padding-left: 3%;
+}
+
+/* .contendor__comentarios .comment h6 {
+  
+} */
+
+.fecha,
+.hora {
+  color: rgb(90, 90, 90);
+  font-family: "Raleway", serif !important;
+}
+
+.estrellitasDiv {
+  display: flex;
+  padding-right: 2%;
+}
+
+.estrellitas {
+  color: rgb(255, 208, 0);
+  display: flex;
+  width: 20%;
+}
+
+.hora {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: right;
+  padding-left: 80%;
+}
+
+.onyxSoldCount {
+  color: rgb(114, 119, 167);
+  font-size: 18px;
+  font-family: "Raleway", serif !important;
+}
+
+.onyxTitle {
+  font-size: 35px;
+  font-family: "Raleway", serif !important;
+}
+
+.onyxDescription {
+  font-size: 18px;
+  font-family: "Raleway", serif !important;
+}
+
+.onyxCost {
+  font-size: 20px;
+  font-variant: normal;
+  font-family: "Raleway", serif !important;
+}
+
+.onyxCost > span {
+  font-family: "Raleway", serif !important;
+  font-size: 20px;
+}
+
+.onyxCategory{
+  font-family: "Raleway", serif !important
 }
