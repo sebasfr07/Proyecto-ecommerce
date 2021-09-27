@@ -12,11 +12,6 @@
   color: rgb(184, 225, 250);
 }
 
-#logout {
-  padding-left: 8px;
-  font-size: small;
-}
-
 #foot {
   position: absolute;
   bottom: 0;
@@ -296,4 +291,8 @@ Info products */
 
 .onyxCategory{
   font-family: "Raleway", serif !important
+}
+
+#btnUser{
+  background-color: rgb(229, 240, 237);
 }

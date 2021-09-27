@@ -59,11 +59,16 @@ const showUser = () => {
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <div>
-      <a class="py-2 d-none d-md-inline-block" id="unamePrinted" href="my-profile.html">${user}
-      <a class="py-2 d-none d-md-inline-block" id="logout" href="">Salir</a>
-      </a>
+      <div class="btn-group">
+      <button type="button" class="btn" id="btnUser" href="my-profile.html">${user}</button>
+      <button type="button" class="btn dropdown-toggle dropdown-toggle-split" id="btnUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+        <a class="dropdown-item" href="cart.html">Mi Carrito</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" id="logout" href="">Salir</a>
       </div>
     </div>
   </nav>
@@ -88,5 +93,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     window.location.replace("login.html");
   });
+
+  document.getElementById("btnUser").addEventListener("click", function (e){
+    window.location = "my-profile.html"
+  })
 
 });
