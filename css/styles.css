@@ -296,3 +296,30 @@ Info products */
 #btnUser{
   background-color: rgb(229, 240, 237);
 }
+
+.relatedProductsDiv{
+  background-color: rgb(170, 170, 170);
+  padding: 10px 10px;
+  margin-left: 20%;
+  margin-right: 20%;
+  display: flex;
+  text-align: center;
+}
+
+.relProd1,.relProd2,.relProd3{
+  display: flex;
+  width: 70%;
+}
+
+.relProd1{
+  background-color: #0087f7;
+}
+
+.relProd2{
+  background-color: rgb(255, 255, 255);
+  width: 50%;
+}
+
+.relProd3{
+  background-color: violet;
+}

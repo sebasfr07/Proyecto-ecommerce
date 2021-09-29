@@ -1,37 +1,38 @@
-const formComentarios = document.getElementById("formComment");
+const formComments = document.getElementById("formComment");
 
 const showImages = (product) => {
-  let imagenes = "";
+  let imagesGroup = "";
   for (let images of product.images) {
-    imagenes += `
+    imagesGroup += `
             <img src="${images}" class="imagenesAuto"></img>
         `;
   }
-  document.getElementById("imgsProduct").innerHTML = imagenes;
+  document.getElementById("imgsProduct").innerHTML = imagesGroup;
 };
 
 const showProductInfo = (product) => {
   // let infoProductos = "<ul>";
-  let infoProductos = "";
+  let infoProducts = "";
   showImages(product);
   //titulo
-  infoProductos += `<div><h1 class='onyxTitle'>${product.name}</h1></div>`; 
+  infoProducts += `<div><h1 class='onyxTitle'>${product.name}</h1></div>`; 
   //categoria
-  infoProductos += `<div><h5>Categoria: <a class='onyxCategory' href='category-info.html'>${product.category}</a></h5></div>`;
+  infoProducts += `<div><h5>Categoria: <a class='onyxCategory' href='category-info.html'>${product.category}</a></h5></div>`;
   //precio
-  infoProductos += `<div><h5 class='onyxCost'><span>${product.cost} ${product.currency}</span></h5></div>`;
+  infoProducts += `<div><h5 class='onyxCost'><span>${product.cost} ${product.currency}</span></h5></div>`;
   //vendidos
-  infoProductos += `<div class='onyxSoldCount'><p>${product.soldCount} unidades vendidas</p></div>`;
+  infoProducts += `<div class='onyxSoldCount'><p>${product.soldCount} unidades vendidas</p></div>`;
   //descripcion
-  infoProductos += `<div><p class='onyxDescription'>${product.description}</p></div>`;
+  infoProducts += `<div><p class='onyxDescription'>${product.description}</p></div>`;
   
   console.log(product);
-  document.getElementById("infoProduct").innerHTML = infoProductos;
+  document.getElementById("infoProduct").innerHTML = infoProducts;
 };
 
-formComentarios.addEventListener("submit", function (e) {
+formComments.addEventListener("submit", function (e) {
   e.preventDefault();
   document.getElementById("comentario").value = "";
+  alert("Tu comentario a sido enviado con exito.");
 });
 
 const showComments = (comments) => {
@@ -60,6 +61,13 @@ const showComments = (comments) => {
   document.getElementById("infoComments").innerHTML = infoComments;
 };
 
+const showRelated = (product) => {
+  for (let relatedProducts of product.relatedProducts) {
+    console.log(relatedProducts);
+  }
+
+}
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -67,4 +75,5 @@ document.addEventListener("DOMContentLoaded", async function (e) {
   const product = (await getJSONData(PRODUCT_INFO_URL)).data;
   showProductInfo(product);
   showComments((await getJSONData(PRODUCT_INFO_COMMENTS_URL)).data);
+  showRelated(product);
 });
