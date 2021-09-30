@@ -61,11 +61,27 @@ const showComments = (comments) => {
   document.getElementById("infoComments").innerHTML = infoComments;
 };
 
-const showRelated = (product) => {
+const showRelated = (product, products) => {
+  let relProducts = ""
   for (let relatedProducts of product.relatedProducts) {
-    console.log(relatedProducts);
+    let related = products[relatedProducts];
+    relProducts += `
+    <a href="products.html" class="list-group-item list-group-item-action">
+    <div class="row">
+        <div class="imgRelProd">
+            <img src="${related.imgSrc}" alt="${related.description}" class="img-thumbnail">
+        </div>
+        <div class="col">
+            <div class="d-flex w-100 justify-content-between">
+                <h4 class="mb-1">${related.name}</h4>
+            </div>
+            <p class="mb-1 text-left">${related.description}</p>
+            <p class="text-muted-cost">${related.cost} ${related.currency}</p>
+        </div>
+    </div>
+    </a>`
   }
-
+  document.getElementById('relatedProductsDiv').innerHTML = relProducts;
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -73,7 +89,8 @@ const showRelated = (product) => {
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", async function (e) {
   const product = (await getJSONData(PRODUCT_INFO_URL)).data;
+  const products = (await getJSONData(PRODUCTS_URL)).data;
   showProductInfo(product);
   showComments((await getJSONData(PRODUCT_INFO_COMMENTS_URL)).data);
-  showRelated(product);
+  showRelated(product, products);
 });

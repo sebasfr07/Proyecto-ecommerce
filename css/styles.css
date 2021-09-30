@@ -298,7 +298,7 @@ Info products */
 }
 
 .relatedProductsDiv{
-  background-color: rgb(170, 170, 170);
+  background-color: rgb(221, 221, 221);
   padding: 10px 10px;
   margin-left: 20%;
   margin-right: 20%;
@@ -306,20 +306,17 @@ Info products */
   text-align: center;
 }
 
-.relProd1,.relProd2,.relProd3{
-  display: flex;
-  width: 70%;
+.imgRelProd{
+  flex: 0 0 90%;
+    max-width: 90%;
 }
 
-.relProd1{
-  background-color: #0087f7;
+.descRelProd{
+  margin-bottom: .25rem!important;
 }
 
-.relProd2{
-  background-color: rgb(255, 255, 255);
-  width: 50%;
-}
-
-.relProd3{
-  background-color: violet;
+.relTitle{
+  margin-left: 20%;
+  margin-bottom: 20px;
+  margin-top: 25px;
 }
