@@ -12,7 +12,7 @@ let costFilterMin = 0;
 let costFilterMax = 9999999;
 
 //funcion del sort
-function sortCategories(criteria, array) {
+function sortProducts(criteria, array) {
   let result = [];
   if (criteria === ORDER_ASC_BY_COST) {
     result = array.sort(function (a, b) {
@@ -64,14 +64,14 @@ function showList() {
 };
 
 //Muestra la lista ordenada
-function sortAndShowCategories(sortCriteria, categoriesArray) {
+function sortAndShowProducts(sortCriteria, categoriesArray) {
   currentSortCriteria = sortCriteria;
 
   if (categoriesArray != undefined) {
     currentCategoriesArray = categoriesArray;
   }
 
-  currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
+  currentCategoriesArray = sortProducts(currentSortCriteria, currentCategoriesArray);
 
   showList();
 }
@@ -81,20 +81,20 @@ document.addEventListener("DOMContentLoaded", async function () {
   
   //Muestra los productos por default
   getJSONData(PRODUCTS_URL).then(function (resultObj) {
-      sortAndShowCategories(ORDER_ASC_BY_COST, resultObj.data);
+      sortAndShowProducts(ORDER_ASC_BY_COST, resultObj.data);
   });
 
   //Criterios de ordenamiento
   document.getElementById("priceAsc").addEventListener("click", function () {
-    sortAndShowCategories(ORDER_ASC_BY_COST);
+    sortAndShowProducts(ORDER_ASC_BY_COST);
   });
 
   document.getElementById("priceDesc").addEventListener("click", function () {
-    sortAndShowCategories(ORDER_DESC_BY_COST);
+    sortAndShowProducts(ORDER_DESC_BY_COST);
   });
 
   document.getElementById("sortByCount").addEventListener("click", function () {
-    sortAndShowCategories(ORDER_BY_PROD_SOLD);
+    sortAndShowProducts(ORDER_BY_PROD_SOLD);
   });
 
   //Filtra la lista
@@ -120,76 +120,3 @@ document.addEventListener("DOMContentLoaded", async function () {
     showList();
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//FORMA ANTIGUA
-/*const list = document.getElementById('products');
-  console.log(list);
-
-  list.setAttribute('class', "list");
-
-const showList = (autos) => {
-
-  for (let auto of autos) {
-    const item = document.createElement("div");
-    const img = document.createElement("img");
-    const name = document.createElement("h1");
-    const description = document.createElement('p');
-
-    var price = document.createElement('p');
-    var priceText = document.createTextNode(`${auto.currency} ${auto.cost}`)
-    price.appendChild(priceText)
-
-    var soldCount = document.createElement('p');
-    var soldCountText = document.createTextNode(`${auto.soldCount} vendidos`)
-    soldCount.appendChild(soldCountText);
-
-
-    name.innerText = auto.name;
-    description.innerText = auto.description;
-
-    img.setAttribute('src', auto.imgSrc);
-    img.setAttribute('class', 'img');
-
-    name.setAttribute('class', 'name');
-    description.setAttribute('class', 'description');
-    price.setAttribute('class', 'price');
-    soldCount.setAttribute('class', 'soldCount');
-    item.setAttribute('class', 'item');
-
-    item.appendChild(img);
-    item.appendChild(name);
-    item.appendChild(description);
-    item.appendChild(price);
-    item.appendChild(soldCount);
-    list.appendChild(item);
-
-    console.log(auto);
-
-  }
-  console.log(autos)
-  var result = autos.filter(auto => auto.cost > 13000);
-    console.log(result)
-};*/
-///////////////////////////////////////////////////////
-
