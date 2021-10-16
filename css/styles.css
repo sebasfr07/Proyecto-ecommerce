@@ -402,6 +402,13 @@ Info products */
   font-weight: 700;
   color: #202020;
  }
+ .totalText{
+  font-size: 22px;
+  font-family: ‘Open Sans’;
+  font-weight: 700;
+  color: #202020;
+  width: 50%;
+ }
  .items{
   font-size: 16px;
   font-family: ‘Open Sans’;
@@ -409,12 +416,25 @@ Info products */
   color: #909090;
   line-height: 10px;
  }
- .total-amount{
-  font-size: 36px;
+ .subtotal-amount{
+  font-size: 30px;
   font-family: ‘Open Sans’;
   font-weight: 900;
   color: #202020;
  }
+ .total-amount{
+  font-size: 30px;
+  font-family: ‘Open Sans’;
+  font-weight: 900;
+  color: #202020;
+  text-align: right;
+  width: 50%;
+ }
+
+ #totalDiv{
+   display: flex;
+ }
+
  .button{
   margin-top: 5px;
   width: 100%;
@@ -428,3 +448,74 @@ Info products */
   font-weight: 600;
   color: #202020;
  }
+
+ #paymentMethod{
+   display: flexbox;
+   margin-top: 5%;
+   margin-right:48%;
+   margin-left: 3%;
+ }
+
+/* The container */
+.containerShip {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.containerShip input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.containerShip:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.containerShip input:checked ~ .checkmark {
+  background-color: #ABCDF9;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.containerShip input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.containerShip .checkmark:after {
+ 	top: 5px;
+	left: 5px;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: white;
+}
