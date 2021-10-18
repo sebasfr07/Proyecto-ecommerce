@@ -104,24 +104,101 @@
           <h3 class="Heading">Shopping Cart</h3>
         </div>
         <div id="cartProducts"></div>
-        <div id="paymentMethod">
-            <div id="shippingMethod" class="form-check">
-              <label class="containerShip">Premium(3-5 días) - Costo del 15% sobre el subtotal.
-                <input type="radio" checked name="radioShipping" value="15" id="premiumShipping" required>
+        <div>
+          <div id="shippingMethod" class="form-check">
+            <div id="shippingInfo">
+              <h2>Método de envío</h2>
+              <h4>Dirección:</h4>
+              <p>Calle: <input type="text" name="calle" required /></p>
+
+              <p>
+                Número: <input type="text" name="numero" size="20" required />
+              </p>
+
+              <p>
+                Esquina:
+                <input type="text" name="nacionalidad" size="20" required />
+              </p>
+              <p>
+                País:
+                <select name="menu" required>
+                  <option>Uruguay</option>
+                  <option>Argentina</option>
+                  <option>Brasil</option>
+                </select>
+              </p>
+            </div>
+
+            <div id="shippingMethodType">
+              <h2>Tipo de envío</h2>
+              <br />
+              <label class="containerShip"
+                >Premium(3-5 días) - Costo del 15% sobre el subtotal.
+                <input
+                  type="radio"
+                  checked
+                  name="radioShipping"
+                  value="15"
+                  id="premiumShipping"
+                  required
+                />
                 <span class="checkmark"></span>
               </label>
-              <label class="containerShip">Express(5-8 días) - Costo del 7% sobre el subtotal.
-                <input type="radio" name="radioShipping" value="7" id="expressShipping">
+              <label class="containerShip"
+                >Express(5-8 días) - Costo del 7% sobre el subtotal.
+                <input
+                  type="radio"
+                  name="radioShipping"
+                  value="7"
+                  id="expressShipping"
+                />
                 <span class="checkmark"></span>
               </label>
-              <label class="containerShip">Standard(12-15 días) - Costo del 5% sobre el subtotal.
-                <input type="radio" name="radioShipping" value="5" id="standardShipping">
+              <label class="containerShip"
+                >Standard(12-15 días) - Costo del 5% sobre el subtotal.
+                <input
+                  type="radio"
+                  name="radioShipping"
+                  value="5"
+                  id="standardShipping"
+                />
                 <span class="checkmark"></span>
               </label>
             </div>
+
+            <div class="paymentMethod">
+              <h2>Método de pago</h2>
+              <br />
+              <div>
+                <label class="containerShip"
+                  >Tarjeta de crédito.
+                  <input
+                    type="radio"
+                    name="radioPay"
+                    value="card"
+                    id="cardPay"
+                    checked
+                    required
+                  />
+                  <span class="checkmark"></span>
+                </label>
+                <label class="containerShip"
+                  >Transferencia bancaria.
+                  <input
+                    type="radio"
+                    name="radioPay"
+                    value="bank"
+                    id="bankPay"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div id="checkoutZone"></div>
+            </div>
+          </div>
         </div>
-    </form>
-    <p class="d-none" id="save"></p>
+      </form>
+      <p class="d-none" id="save"></p>
     </div>
 
     <div id="spinner-wrapper">

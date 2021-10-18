@@ -387,9 +387,13 @@ Info products */
   margin-right: 5%;
  }
  .checkout{
-  float: right;
-  margin-right: 5%;
-  width: 28%;
+   height: 50%;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 70%;
+  background-color: rgb(223, 242, 248);
+  border-radius: 10px;
+  padding: 10px
  }
  .total{
   width: 100%;
@@ -450,7 +454,7 @@ Info products */
  }
 
  #paymentMethod{
-   display: flexbox;
+   display: flex;
    margin-top: 5%;
    margin-right:48%;
    margin-left: 3%;
@@ -518,4 +522,27 @@ Info products */
 	height: 6px;
 	border-radius: 50%;
 	background: white;
+}
+
+.paymentMethod .shippingMethod{
+  display: flex;
+  width: 50%;
+}
+
+#shippingMethod{
+  display: flex;
+  width: 99%;
+}
+
+#shippingMethodType{
+  width: 33%;
+}
+
+#shippingInfo{
+  width: 33%;
+  margin-left: 4%;
+}
+
+.paymentMethod{
+  width: 33%;
 }

@@ -1,13 +1,10 @@
-// function countProductSustract(quantity){
-//     quantity--;
-// }
-
+//funcion encargada de imprimir el carrito y el checkout
 function showCart(cart) {
   let article = cart.articles[0];
+  //defino una variable que utilizare en las dos funciones
   var quantity = article.count;
 
-  //Hace una lista de los radio buttons, los recorre y devuelve el valor del seleccionado.
-
+  //imprime el carrito
   let cartInfo = "";
   cartInfo += `
     <div class="Cart-Items">
@@ -27,7 +24,12 @@ function showCart(cart) {
  <div class="prices">${article.unitCost}$ ${article.currency}</div>
  </div>
  <hr> 
- <div class="checkout">
+    `;
+
+  //imprime el checkout
+  let cartCheckout = "";
+  cartCheckout += `
+    <div class="checkout">
  <div class="total">
  <div>
  <div class="Subtotal">Sub-Total</div>
@@ -40,28 +42,36 @@ function showCart(cart) {
  <br>
  <div id="totalDiv">
  <div class="totalText">Total</div>
- <div class="total-amount" id="Total">${quantity*article.unitCost + (quantity*article.unitCost*15)/100}$</div>
+ <div class="total-amount" id="Total">${
+   quantity * article.unitCost + (quantity * article.unitCost * 15) / 100
+ }$</div>
  </div>
- <input type="submit" class="button" value="Checkout">
+ <input type="submit" class="button" value="Comprar">
  </div>
     `;
+  document.getElementById("checkoutZone").innerHTML = cartCheckout;
   document.getElementById("cartProducts").innerHTML = cartInfo;
+
+  //defino otras dos variables para pasarselas a la funcion
   let itemQuantity = document.getElementById("itemQuantity");
   let subTotal = document.getElementById("subTotal");
   let unitCost = article.unitCost;
 
   countProduct(quantity, subTotal, unitCost, itemQuantity);
-  showTotalShipping(quantity, unitCost);
 }
 
+//funcion que se encarga del checkout
 function countProduct(quantity, subtotal, unitCost, itemQuantity) {
+  //creo variables con los elementos ya creados en ShowCart
   let add = document.getElementById("addProduct");
   let sustract = document.getElementById("sustractProduct");
   let newQuantity = document.getElementById("quantity");
+  //cambio el valor de las variables
   let subTotal = subtotal;
   let item = itemQuantity;
   let sTotal = quantity * unitCost;
 
+  //seleccion de metodo de envio
   let shippingValue = 15;
   let premium = document.getElementById("premiumShipping");
   let express = document.getElementById("expressShipping");
@@ -69,19 +79,20 @@ function countProduct(quantity, subtotal, unitCost, itemQuantity) {
   premium.addEventListener("click", function () {
     shippingValue = 15;
     document.getElementById("Total").innerHTML =
-      sTotal + (sTotal * shippingValue) / 100 + "$"
+      sTotal + (sTotal * shippingValue) / 100 + "$";
   });
   express.addEventListener("click", function () {
     shippingValue = 7;
     document.getElementById("Total").innerHTML =
-      sTotal + (sTotal * shippingValue) / 100 + "$"
+      sTotal + (sTotal * shippingValue) / 100 + "$";
   });
   standard.addEventListener("click", function () {
     shippingValue = 5;
     document.getElementById("Total").innerHTML =
-      sTotal + (sTotal * shippingValue) / 100 + "$"
+      sTotal + (sTotal * shippingValue) / 100 + "$";
   });
 
+  //añadir o quitar items
   add.addEventListener("click", async function (e) {
     quantity++;
     newQuantity.innerHTML = quantity;
@@ -103,10 +114,16 @@ function countProduct(quantity, subtotal, unitCost, itemQuantity) {
     document.getElementById("Total").innerHTML =
       sTotal + (sTotal * shippingValue) / 100 + "$";
   });
-}
 
-function showTotalShipping(quantity, unitCost) {
-  let subTotalforTotal = document.getElementById("subTotal");
+  //submit
+  document.getElementById("formCart").addEventListener("submit", function (e) {
+    e.preventDefault();
+    let totalPrice = sTotal + (sTotal * shippingValue) / 100;
+    localStorage.setItem("totalPrice", totalPrice);
+    console.log(localStorage.getItem("totalPrice"));
+    document.getElementById("formCart").reset();
+    alert("Pago realizado con éxito!")
+  });
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -116,18 +133,3 @@ document.addEventListener("DOMContentLoaded", async function (e) {
   const cart = (await getJSONData(CART_INFO_URL)).data;
   showCart(cart);
 });
-
-// <div class="total-amount" id="Total">${(article.unitCost * quantity)+((article.unitCost * quantity)/100)}$</div>
-
-//probar con 3 adeventlisteners para los radios
-
-// document.querySelectorAll('input[name="radioShipping"]').forEach((elem) => {
-//   elem.addEventListener("click", function (event) {
-//     var shippingCost = event.target.value;
-//     document.getElementById("save").innerText = shippingCost;
-//     console.log(Number(document.getElementById("save").textContent));
-//     var save = Number(document.getElementById("save").textContent);
-//     document.getElementById("Total").innerHTML = sTotal+(sTotal*save)/100 + "$";
-//     console.log(save);
-//   });
-// });
