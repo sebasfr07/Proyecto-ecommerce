@@ -43,12 +43,60 @@
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+
+
+  <div id="container">
+    <div class="row">
+
+      <div class="col-md-7">
+        <div class="container-fluid well span6">
+          <div class="row-fluid p-5">
+                
+                <div class="span8">
+                    <h2 class="font-weight-light">Nombre/s: <span id="txtNames" class="font-weight-lighter"></span></h2>
+                    <h2 class="font-weight-light">Apellido/s: <span id="txtSurnames" class="font-weight-lighter"></span></h2>
+                    <br>
+                    <h4 class="font-weight-light">eMail: <span id="txtEmail" style="color: rgb(0, 132, 255);"></span></h1>
+                    <br>
+                    <h4 class="font-weight-light">Número: <span id="txtPhone"></span></h1>
+                </div>
+ 
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5 border-left">
+        <form action="" id="profileForm">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="text-right">Configuración de perfil</h4>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">
+                  <label class="labels">Nombres</label>
+                  <input type="text" id="names" class="form-control" placeholder="nombre/s" value="" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="labels">Apellidos</label>
+                  <input type="text" id="surnames" class="form-control" value="" placeholder="apellido/s" required>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels">Dirección e-mail</label>
+                  <input type="email" id="email" class="form-control" placeholder="colocar dirección e-mail" value="" required>
+                </div>
+                <div class="col-md-12">
+                  <label class="labels">Número de teléfono</label>
+                  <input type="tel" id="phone" class="form-control" minlength="8" maxlength="10" placeholder="colocar número de teléfono" value="">
+                </div>
+            </div>
+            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Guardar cambios</button></div>
+        </div>
+        </form>
+      </div>
+  
     </div>
   </div>
   <footer class="text-muted bg-light">
