@@ -5,9 +5,9 @@ formLogin.addEventListener("submit", function (event) {
     event.preventDefault();
     
     const uname = document.getElementById("uname").value
-    sessionStorage.setItem("user", uname);
+    localStorage.setItem("user", uname);
 
-    sessionStorage.setItem("cargado", "cargado");
+    localStorage.setItem("cargado", "cargado");
     window.location.replace("index.html");
     
 });
