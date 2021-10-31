@@ -42,22 +42,23 @@ function showList() {
   let lista = "";
   currentCategoriesArray.filter(auto => auto.cost >= costFilterMin && auto.cost <= costFilterMax).forEach(auto => {
     lista += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="${auto.imgSrc}" alt="${auto.description}" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">${auto.name}</h4>
-                            <small class="text-muted">${auto.soldCount} vendidos</small>
-                        </div>
-                        <p class="mb-1">${auto.description}</p>
-                        <br>
-                        <p class="text-muted-cost">${auto.cost} ${auto.currency}</p>
-                    </div>
+            
+              <div class="col-md-6">
+              <a href="product-info.html" class="list-group-item list-group-item-action">
+                <div class="card mb-4 shadow-sm">
+                <img src="${auto.imgSrc}" alt="${auto.description}" class="img-thumbnail">
+                    <div class="card-body">
+                    <p class="h1">${auto.name}</p>
+                    <p class="card-text">${auto.description}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <p class="h4">${auto.cost}${auto.currency}</p>
+                  <small class="text-muted">Unidades vendidas ${auto.soldCount}</small>
                 </div>
-            </a>`
+              </div>
+            </div>
+            </a>
+          </div>
+        `
     console.log(auto);
   });
   document.getElementById('products').innerHTML = lista;
