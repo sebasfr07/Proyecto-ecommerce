@@ -17,7 +17,6 @@ function saveInfo() {
   let sEmail = document.querySelector("#email").value;
   let sPhone = document.querySelector("#phone").value;
   let sAge = document.querySelector("#age").value;
-  console.log(sNames, sSurnames, sEmail, sPhone);
   updateInfo(sNames, sSurnames, sAge, sEmail, sPhone);
 }
 
@@ -29,10 +28,8 @@ function printInfo() {
     let txtAge = document.querySelector('#txtAge');
     let txtEmail = document.querySelector('#txtEmail');
     let txtPhone = document.querySelector('#txtPhone');
-    let vacio = "";
 
     const info = JSON.parse(datos);
-    console.log(info.names);
     (info.names !== '') ? txtNames.innerHTML = info.names : null;
     (info.surnames !== '') ? txtSurnames.innerHTML = info.surnames : null;
     (info.email !== '') ? txtEmail.innerHTML = info.email : null;
