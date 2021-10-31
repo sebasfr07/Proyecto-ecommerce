@@ -36,7 +36,7 @@ function printInfo() {
     (info.names !== '') ? txtNames.innerHTML = info.names : null;
     (info.surnames !== '') ? txtSurnames.innerHTML = info.surnames : null;
     (info.email !== '') ? txtEmail.innerHTML = info.email : null;
-    (info.Phone !== '') ? txtPhone.innerHTML = info.phone : null;
+    (info.phone !== '') ? txtPhone.innerHTML = info.phone : null;
     (info.age !== '') ? txtAge.innerHTML = info.age : null;
 }
 
