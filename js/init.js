@@ -47,14 +47,14 @@ var getJSONData = function (url) {
 };
 
 const showLogin = () => {
-  if (localStorage.getItem("cargado")) {
+  if (sessionStorage.getItem("cargado")) {
   } else {
     window.location.replace("login.html");
   }
 };
 
 const showUser = () => {
-  var user = localStorage.getItem("user");
+  var user = sessionStorage.getItem("user");
   let userPrint = "";
 
   let firstDiv = document.querySelector("div");
@@ -88,8 +88,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   document.getElementById("logout").addEventListener("click", function (e) {
     e.preventDefault();
-    
-    localStorage.removeItem("cargado");
+
+    sessionStorage.removeItem("cargado");
 
     window.location.replace("login.html");
   });
