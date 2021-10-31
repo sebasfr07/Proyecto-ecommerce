@@ -1,9 +1,10 @@
 const formProfile = document.getElementById("profileForm");
 
-function updateInfo(pNames, pSurnames, pEmail, pPhone) {
+function updateInfo(pNames, pSurnames, pAge, pEmail, pPhone) {
   var newInfo = {
     names: pNames,
     surnames: pSurnames,
+    age: pAge,
     email: pEmail,
     phone: pPhone,
   };
@@ -15,8 +16,9 @@ function saveInfo() {
   let sSurnames = document.querySelector("#surnames").value;
   let sEmail = document.querySelector("#email").value;
   let sPhone = document.querySelector("#phone").value;
+  let sAge = document.querySelector("#age").value;
   console.log(sNames, sSurnames, sEmail, sPhone);
-  updateInfo(sNames, sSurnames, sEmail, sPhone);
+  updateInfo(sNames, sSurnames, sAge, sEmail, sPhone);
 }
 
 function printInfo() {
@@ -24,15 +26,18 @@ function printInfo() {
 
     let txtNames = document.querySelector('#txtNames');
     let txtSurnames = document.querySelector('#txtSurnames');
+    let txtAge = document.querySelector('#txtAge');
     let txtEmail = document.querySelector('#txtEmail');
     let txtPhone = document.querySelector('#txtPhone');
+    let vacio = "";
 
     const info = JSON.parse(datos);
     console.log(info.names);
-    txtNames.innerHTML = info.names;
-    txtSurnames.innerHTML = info.surnames;
-    txtEmail.innerHTML = info.email;
-    txtPhone.innerHTML = info.phone;
+    (info.names !== '') ? txtNames.innerHTML = info.names : null;
+    (info.surnames !== '') ? txtSurnames.innerHTML = info.surnames : null;
+    (info.email !== '') ? txtEmail.innerHTML = info.email : null;
+    (info.Phone !== '') ? txtPhone.innerHTML = info.phone : null;
+    (info.age !== '') ? txtAge.innerHTML = info.age : null;
 }
 
 formProfile.addEventListener("submit", function (e) {

@@ -55,6 +55,8 @@
                     <h2 class="font-weight-light">Nombre/s: <span id="txtNames" class="font-weight-lighter"></span></h2>
                     <h2 class="font-weight-light">Apellido/s: <span id="txtSurnames" class="font-weight-lighter"></span></h2>
                     <br>
+                    <h4 class="font-weight-light">Edad: <span id="txtAge"></span></h1>
+                    <br>
                     <h4 class="font-weight-light">eMail: <span id="txtEmail" style="color: rgb(0, 132, 255);"></span></h1>
                     <br>
                     <h4 class="font-weight-light">Número: <span id="txtPhone"></span></h1>
@@ -73,21 +75,25 @@
             <div class="row mt-2">
                 <div class="col-md-6">
                   <label class="labels">Nombres</label>
-                  <input type="text" id="names" class="form-control" placeholder="nombre/s" value="" required>
+                  <input type="text" id="names" class="form-control" placeholder="nombre/s">
                 </div>
                 <div class="col-md-6">
                   <label class="labels">Apellidos</label>
-                  <input type="text" id="surnames" class="form-control" value="" placeholder="apellido/s" required>
+                  <input type="text" id="surnames" class="form-control" placeholder="apellido/s">
                 </div>
             </div>
             <div class="row mt-3">
+                <div class="col-md-2">
+                  <label class="labels">Edad</label>
+                  <input type="tel" id="age" class="form-control" maxlength="2" placeholder="edad">
+                </div>
                 <div class="col-md-12">
                   <label class="labels">Dirección e-mail</label>
-                  <input type="email" id="email" class="form-control" placeholder="colocar dirección e-mail" value="" required>
+                  <input type="email" id="email" class="form-control" placeholder="colocar dirección e-mail">
                 </div>
                 <div class="col-md-12">
                   <label class="labels">Número de teléfono</label>
-                  <input type="tel" id="phone" class="form-control" minlength="8" maxlength="10" placeholder="colocar número de teléfono" value="">
+                  <input type="tel" id="phone" class="form-control" minlength="8" maxlength="10" placeholder="colocar número de teléfono">
                 </div>
             </div>
             <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Guardar cambios</button></div>
