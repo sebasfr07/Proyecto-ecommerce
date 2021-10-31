@@ -90,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     e.preventDefault();
 
     localStorage.removeItem("cargado");
+    localStorage.removeItem("datos");
 
     window.location.replace("login.html");
   });
