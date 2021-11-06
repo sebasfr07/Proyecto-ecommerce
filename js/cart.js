@@ -12,9 +12,9 @@ function showCart(cart) {
  <img src="${article.src}" style={{ height="120px" }} />
  </div>
  <div class="about">
- <h1 class="title">${article.name}</h1>
+ <h1 class="lead font-weight-bold">${article.name}</h1>
  <br>
- <h3 class="subtitle">Deshodorante de ambiente para auto.</h3>
+ <h3 class="lead">Deshodorante de ambiente para auto.</h3>
  </div>
  <div class="counter">
  <div class="btnCart" id="addProduct">+</div>
@@ -46,6 +46,7 @@ function showCart(cart) {
    quantity * article.unitCost + (quantity * article.unitCost * 15) / 100
  }$</div>
  </div>
+ <button type="button" class="button" data-toggle="modal" data-target="#myModal">Método de pago</button>
  <input type="submit" class="button" value="Comprar">
  </div>
     `;
@@ -118,11 +119,16 @@ function countProduct(quantity, subtotal, unitCost, itemQuantity) {
   //submit
   document.getElementById("formCart").addEventListener("submit", function (e) {
     e.preventDefault();
+    console.log(quantity);
+    if(quantity === 0){
+      alert("No hay productos para comprar.")
+    }else{
     let totalPrice = sTotal + (sTotal * shippingValue) / 100;
     localStorage.setItem("totalPrice", totalPrice);
     console.log(localStorage.getItem("totalPrice"));
     document.getElementById("formCart").reset();
     alert("Pago realizado con éxito!")
+  }
   });
 }
 
