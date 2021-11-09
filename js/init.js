@@ -58,7 +58,6 @@ const showUser = () => {
   let userPrint = "";
 
   let firstDiv = document.querySelector("div");
-  console.log(firstDiv);
 
   if (user != undefined) {
     userPrint += `

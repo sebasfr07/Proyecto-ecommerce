@@ -35,12 +35,49 @@ function printInfo() {
     (info.email !== '') ? txtEmail.innerHTML = info.email : null;
     (info.phone !== '') ? txtPhone.innerHTML = info.phone : null;
     (info.age !== '') ? txtAge.innerHTML = info.age : null;
-}
+};
+
+function saveOldInfo(){
+    let pullNames = document.querySelector('#txtNames').innerHTML;
+    let pullSurnames = document.querySelector('#txtSurnames').innerHTML;
+    let pullAge = document.querySelector('#txtAge').innerHTML;
+    let pullEmail = document.querySelector('#txtEmail').innerHTML;
+    let pullPhone = document.querySelector('#txtPhone').innerHTML;
+
+    var oldInfo = {
+      oNames: pullNames,
+      oSurnames: pullSurnames,
+      oAge: pullAge,
+      oEmail: pullEmail,
+      oPhone: pullPhone,
+    };
+    localStorage.setItem("viejosDatos", JSON.stringify(oldInfo));
+};
+
+function printOldInfo(){
+  var oldDatos = localStorage.getItem("viejosDatos");
+
+    let txtNames = document.querySelector('#txtNames');
+    let txtSurnames = document.querySelector('#txtSurnames');
+    let txtAge = document.querySelector('#txtAge');
+    let txtEmail = document.querySelector('#txtEmail');
+    let txtPhone = document.querySelector('#txtPhone');
+
+    const oldInfo = JSON.parse(oldDatos);
+    txtNames.innerHTML = oldInfo.oNames;
+    txtSurnames.innerHTML = oldInfo.oSurnames;
+    txtEmail.innerHTML = oldInfo.oEmail;
+    txtPhone.innerHTML = oldInfo.oPhone;
+    txtAge.innerHTML = oldInfo.oAge;
+};
 
 formProfile.addEventListener("submit", function (e) {
   e.preventDefault();
   saveInfo();
-  printInfo()
+  printInfo();
+  saveOldInfo();
+  console.log(localStorage.getItem("viejosDatos"))
+  // printOldInfo();
   formProfile.reset();
 });
 
@@ -48,5 +85,5 @@ formProfile.addEventListener("submit", function (e) {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
-    printInfo();
+    printOldInfo();
 });
