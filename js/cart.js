@@ -1,3 +1,8 @@
+let addressPattern = /^\d{4}$/;
+let streetPattern = /^[\w-]{1,20}$/;
+let cornerPattern = /^([ ]?\.?[a-zA-Z]+)+$/;
+
+
 //funcion encargada de imprimir el carrito y el checkout
 function showCart(cart) {
   let article = cart.articles[0];
@@ -61,6 +66,19 @@ function showCart(cart) {
   countProduct(quantity, subTotal, unitCost, itemQuantity);
 }
 
+//funcione para validar//////////////////////////////
+function validate(adress, street, corner){
+  if(!streetPattern.test(street)){
+    alert("Necesita colocar una dirección válida.")
+  }else if(!addressPattern.test(adress)){
+    alert("Necesita colocar un número de dirección válido.")
+  }else if(!cornerPattern.test(corner)){
+    alert("Necesita colocar una esquina válida.")
+  };
+};
+//////////////////////////////////////////////////////
+
+
 //funcion que se encarga del checkout
 function countProduct(quantity, subtotal, unitCost, itemQuantity) {
   //creo variables con los elementos ya creados en ShowCart
@@ -119,6 +137,11 @@ function countProduct(quantity, subtotal, unitCost, itemQuantity) {
   //submit
   document.getElementById("formCart").addEventListener("submit", function (e) {
     e.preventDefault();
+    let address = document.getElementById("address").value;
+    let street = document.getElementById("street").value;
+    let corner = document.getElementById("corner").value;
+    validate(address, street, corner);
+
     console.log(quantity);
     if(quantity === 0){
       alert("No hay productos para comprar.")
@@ -127,10 +150,11 @@ function countProduct(quantity, subtotal, unitCost, itemQuantity) {
     localStorage.setItem("totalPrice", totalPrice);
     console.log(localStorage.getItem("totalPrice"));
     document.getElementById("formCart").reset();
-    alert("Pago realizado con éxito!")
   }
   });
 }
+
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
