@@ -2,6 +2,9 @@ let addressPattern = /^\d{4}$/;
 let streetPattern = /^[\w-]{1,20}$/;
 let cornerPattern = /^([ ]?\.?[a-zA-Z]+)+$/;
 
+let cardPattenr = /^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/;
+
+
 
 //funcion encargada de imprimir el carrito y el checkout
 function showCart(cart) {
@@ -154,10 +157,65 @@ function countProduct(quantity, subtotal, unitCost, itemQuantity) {
   });
 }
 
-function printShipping(){
-  standard.addEventListener("click", function () {
-    const cardPay = document.getElementById("cardPay");
-    const 
+function showPayment(){
+  const cardPay = document.getElementById("cardPay");
+  const bankPay = document.getElementById("bankPay");
+  let paymentDiv = document.getElementById("payDiv");
+  const cardForm = `
+                    <div class="card px-4">
+                    <p class="h8 py-3">Datos de la tarjeta</p>
+                    <div class="row gx-3">
+                        <div class="col-12">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Nombre del titular</p> <input class="form-control mb-3" type="text" placeholder="Nombre" value="">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Número de la tarjeta</p> <input class="form-control mb-3" type="text" placeholder="XXXX XXXX XXXX XXXX">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Expiración</p> <input class="form-control mb-3" type="text" placeholder="MM/AA">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">CVV/CVC</p> <input class="form-control mb-3 pt-2 " type="password" placeholder="***">
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+`;
+const bankForm = `
+                  <div class="card px-4">
+                  <p class="h8 py-3">Datos de la cuenta</p>
+                  <div class="row gx-3">
+                      <div class="col-12">
+                          <div class="d-flex flex-column">
+                              <p class="text mb-1">Nombre del titular</p> <input class="form-control mb-3" type="text" placeholder="Name" value="Barry Allen">
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="d-flex flex-column">
+                              <p class="text mb-1">Número de cuenta</p> <input class="form-control mb-3" type="text" placeholder="1234 5678 435678">
+                          </div>
+                      </div>
+                      <div class="col-6">
+                          <div class="d-flex flex-column">
+                              <p class="text mb-1">Banco</p> <input class="form-control mb-3" type="text">
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+`
+paymentDiv.innerHTML = cardForm;
+  cardPay.addEventListener("click", function () {
+     paymentDiv.innerHTML = cardForm;
+  });
+  bankPay.addEventListener("click", function () {
+     paymentDiv.innerHTML = bankForm;
   });
 };
 
@@ -167,6 +225,5 @@ function printShipping(){
 document.addEventListener("DOMContentLoaded", async function (e) {
   const cart = (await getJSONData(CART_INFO_URL)).data;
   showCart(cart);
-
-
+  showPayment();
 });

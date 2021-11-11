@@ -74,7 +74,49 @@
         color: #e44c4c;
         cursor: pointer;
         border-bottom: 1px solid #e44c4c;
+
+        
       }
+
+          .card {
+          max-width: 500px;
+          margin: auto;
+          color: black;
+          border-radius: 20 px
+        }
+
+        .container .h8 {
+          font-size: 30px;
+          font-weight: 800;
+          text-align: center
+        }
+
+
+        .form-control {
+          color: white;
+          background-color: #223C60;
+          border: 2px solid transparent;
+          height: 60px;
+          padding-left: 20px;
+          vertical-align: middle
+        }
+
+        .form-control:focus {
+          color: white;
+          background-color: #0C4160;
+          border: 2px solid #2d4dda;
+          box-shadow: none
+        }
+
+        .text {
+          font-size: 14px;
+          font-weight: 600
+        }
+
+        ::placeholder {
+          font-size: 14px;
+          font-weight: 600
+        }
     </style>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
@@ -168,12 +210,6 @@
 
             <div class="paymentMethod">
               <h3>Método de pago</h3>
-              <!-- <br/> -->
-              <div>
-                
-                  
-                </label>
-              </div>
               <div id="checkoutZone"></div>
               
               <div class="modal fade" id="myModal" role="dialog">
@@ -186,7 +222,7 @@
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                      <!-- Contenido del modal ----------------------------->
+                      <!-- Contenido del modal(pago) ----------------------------->
 
                       <label class="containerShip"
                       >Tarjeta de crédito.
@@ -208,11 +244,17 @@
                         id="bankPay"
                       />
                       <span class="checkmark"></span>
-
+                    </label>
                     <!-- ----------------------------------------------- -->
+                    <br>
+                    <!-- Contenido del modal(div)----------------------- -->
+                    <div class="" id="payDiv"></div>
+                    <!-- ----------------------------------------------- -->
+
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
                     </div>
                   </div>
                   
