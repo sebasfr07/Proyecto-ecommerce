@@ -154,7 +154,12 @@ function countProduct(quantity, subtotal, unitCost, itemQuantity) {
   });
 }
 
-
+function printShipping(){
+  standard.addEventListener("click", function () {
+    const cardPay = document.getElementById("cardPay");
+    const 
+  });
+};
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -162,4 +167,6 @@ function countProduct(quantity, subtotal, unitCost, itemQuantity) {
 document.addEventListener("DOMContentLoaded", async function (e) {
   const cart = (await getJSONData(CART_INFO_URL)).data;
   showCart(cart);
+
+
 });
