@@ -2,11 +2,16 @@ let addressPattern = /^\d{4}$/;
 let streetPattern = /^[\w-]{1,20}$/;
 let cornerPattern = /^([ ]?\.?[a-zA-Z]+)+$/;
 
-let cardPattenr = /^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/;
+let namePattern = /^(?!s*$)[-a-zA-Z0-9_:,.' ']{1,100}$/;  
+let cardPattenr = /^((4\d{3})|(5[1-5]\d{2})|(6011)|(34\d{1})|(37\d{1}))-?\s?\d{4}-?\s?\d{4}-?\s?\d{4}|3[4,7][\d\s-]{15}$/;
+let datePattern = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
+let codePattern = /^[0-9]{3}$/;
 
+let bankNumberPattern = /^[0-9]{7,14}$/;
+let bankNamePattern = /^([ ]?\.?[a-zA-Z]+)+$/;
 
+//funcion encargada de imprimir el carrito y el checkout///////////////
 
-//funcion encargada de imprimir el carrito y el checkout
 function showCart(cart) {
   let article = cart.articles[0];
   //defino una variable que utilizare en las dos funciones
@@ -69,17 +74,9 @@ function showCart(cart) {
   countProduct(quantity, subTotal, unitCost, itemQuantity);
 }
 
-//funcione para validar//////////////////////////////
-function validate(adress, street, corner){
-  if(!streetPattern.test(street)){
-    alert("Necesita colocar una dirección válida.")
-  }else if(!addressPattern.test(adress)){
-    alert("Necesita colocar un número de dirección válido.")
-  }else if(!cornerPattern.test(corner)){
-    alert("Necesita colocar una esquina válida.")
-  };
-};
-//////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+
 
 
 //funcion que se encarga del checkout
@@ -157,6 +154,8 @@ function countProduct(quantity, subtotal, unitCost, itemQuantity) {
   });
 }
 
+// Mostrar metdodo de pago////////////////////////////////////////////////////////
+
 function showPayment(){
   const cardPay = document.getElementById("cardPay");
   const bankPay = document.getElementById("bankPay");
@@ -167,22 +166,23 @@ function showPayment(){
                     <div class="row gx-3">
                         <div class="col-12">
                             <div class="d-flex flex-column">
-                                <p class="text mb-1">Nombre del titular</p> <input class="form-control mb-3" type="text" placeholder="Nombre" value="">
+                                <p class="text mb-1">Nombre del titular</p> <input class="form-control mb-3" type="text" placeholder="Nombre" value="" id="cardUserName">
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="d-flex flex-column">
-                                <p class="text mb-1">Número de la tarjeta</p> <input class="form-control mb-3" type="text" placeholder="XXXX XXXX XXXX XXXX">
+                                <p class="text mb-1">Número de la tarjeta</p> <small class="text-muted">Toma tarjetas MasterCard de ejemplo(5454 5454 5454 5454)</small><input class="form-control mb-3" type="text" placeholder="XXXX XXXX XXXX XXXX" id="cardNumber">
+                                
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="d-flex flex-column">
-                                <p class="text mb-1">Expiración</p> <input class="form-control mb-3" type="text" placeholder="MM/AA">
+                                <p class="text mb-1">Expiración</p> <input class="form-control mb-3" type="text" placeholder="MM/AA" id="cardDate">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="d-flex flex-column">
-                                <p class="text mb-1">CVV/CVC</p> <input class="form-control mb-3 pt-2 " type="password" placeholder="***">
+                                <p class="text mb-1">CVV/CVC</p> <input class="form-control mb-3 pt-2 " type="password" placeholder="***" id="cardCode">
                             </div>
                         </div>
                     </div>
@@ -194,17 +194,17 @@ const bankForm = `
                   <div class="row gx-3">
                       <div class="col-12">
                           <div class="d-flex flex-column">
-                              <p class="text mb-1">Nombre del titular</p> <input class="form-control mb-3" type="text" placeholder="Name" value="Barry Allen">
+                              <p class="text mb-1">Nombre del titular</p> <input class="form-control mb-3" type="text" placeholder="Nombre" value="" id="bankUsername">
                           </div>
                       </div>
                       <div class="col-12">
                           <div class="d-flex flex-column">
-                              <p class="text mb-1">Número de cuenta</p> <input class="form-control mb-3" type="text" placeholder="1234 5678 435678">
+                              <p class="text mb-1">Número de cuenta</p><small class="text-muted">12345678901234</small> <input class="form-control mb-3" type="text" placeholder="Ejemplo 12345678901234" id="bankNumber">
                           </div>
                       </div>
                       <div class="col-6">
                           <div class="d-flex flex-column">
-                              <p class="text mb-1">Banco</p> <input class="form-control mb-3" type="text">
+                              <p class="text mb-1">Banco</p> <input class="form-control mb-3" type="text" id="bankName" placeholder="Nombre del banco">
                           </div>
                       </div>
                   </div>
@@ -218,6 +218,73 @@ paymentDiv.innerHTML = cardForm;
      paymentDiv.innerHTML = bankForm;
   });
 };
+
+//////////////////////////////////////////////////////////////////////////////////
+
+// Funciones para validar el metodo de pago///////////////////////////////////////
+
+function validateCard(){
+  let cardName = document.getElementById("cardUserName").value;
+  let cardNumber = document.getElementById("cardNumber").value;
+  let cardDate = document.getElementById("cardDate").value;
+  let cardCode = document.getElementById("cardCode").value;
+
+  if(!namePattern.test(cardName)){
+    alert("Inserte un nombre valido.");
+  }else if(!cardPattenr.test(cardNumber)){
+    alert("Insterte un número de tarjeta válido");
+  }else if(!datePattern.test(cardDate)){
+    alert("Inserte una fecha de expiración válida");
+  }else if(!codePattern.test(cardCode)){
+    alert("Insterte un número de CVC/CVV válido");
+  }else{
+    $('#myModal').modal('hide');
+  }
+};
+
+function validateBank(){
+  let bankUsername = document.getElementById("bankUsername").value;
+  let bankNumber = document.getElementById("bankNumber").value;
+  let bankName = document.getElementById("bankName").value;
+
+  if(!namePattern.test(bankUsername)){
+    alert("Inserte un nombre válido");
+  }else if(!bankNumberPattern.test(bankNumber)){
+    alert("Inserte una cuenta de banco válida");
+  }else if(!bankNamePattern.test(bankName)){
+    alert("Inserte un nombre de banco válido");
+  }else{
+    $('#myModal').modal('hide');
+  }
+};
+
+document.getElementById("submitPay").addEventListener("click", function(){
+  let paySelected = document.getElementById("cardPay").checked;
+  if(paySelected){
+    validateCard();
+  }else{
+    validateBank();
+  }
+});
+
+//////////////////////////////////////////////////////////////////////////////////
+
+//funcione para validar//////////////////////////////
+
+function validate(adress, street, corner){
+  let paySelected = document.getElementById("cardUserName").value;
+  if(!streetPattern.test(street)){
+    alert("Necesita colocar una dirección válida.")
+  }else if(!addressPattern.test(adress)){
+    alert("Necesita colocar un número de dirección válido.")
+  }else if(!cornerPattern.test(corner)){
+    alert("Necesita colocar una esquina válida.")
+  }else if(paySelected === ""){
+    alert("Elija un método de pago")
+  };
+};
+
+//////////////////////////////////////////////////////
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
