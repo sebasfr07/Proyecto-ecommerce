@@ -548,3 +548,21 @@ Info products */
 #imgUser{
   width: 25%;
 }
+
+.searchBox{
+  width: 70%;
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+}
+
+.searchBox i{
+  margin: 0px 4px;
+  position: relative;
+  right: 30px;
+}
+
+.searchBox imput{
+  width: 100%;
+  min-width: 100%;
+}
